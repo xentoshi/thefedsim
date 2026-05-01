@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -7,43 +7,31 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* ─── Shadcn light/dark tokens (keep for site pages) ─────────────────────── */
 :root {
-  --radius: 0.625rem;
+  --radius: 0.5rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -62,19 +50,6 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -96,36 +71,165 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ─── GAME DESIGN TOKENS — TradingView Dark ─────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --g-base:          #131722;
+  --g-surface:       #1e222d;
+  --g-raised:        #2a2e39;
+  --g-border:        #2a2e39;
+  --g-border-bright: #363a45;
+
+  /* Brand — TradingView blue */
+  --g-brand:    #2962ff;
+  --g-brand-dim: rgba(41,98,255,0.15);
+
+  /* Semantic colors — TradingView exact */
+  --g-up:   #26a69a;
+  --g-down: #ef5350;
+  --g-warn: #ff9800;
+  --g-info: #2196f3;
+
+  /* Text scale */
+  --g-txt-1: #d1d4dc;
+  --g-txt-2: #9598a1;
+  --g-txt-3: #6a6d78;
+
+  /* Spacing scale — 4/8/12/16/24/32 */
+  --g-space-1: 4px;
+  --g-space-2: 8px;
+  --g-space-3: 12px;
+  --g-space-4: 16px;
+  --g-space-6: 24px;
+  --g-space-8: 32px;
+
+  /* Typography */
+  --g-font-data:    'Space Mono', monospace;
+  --g-font-display: 'Orbitron', monospace;
+}
+
+/* ─── BASE ───────────────────────────────────────────────────────────────── */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+  * { @apply border-border outline-ring/50; box-sizing: border-box; }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Space Mono', monospace;
-    background-color: #0a0a0a;
-    color: white;
+    background-color: var(--g-base);
+    color: var(--g-txt-1);
+    font-family: var(--g-font-data);
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-.wallet-adapter-button-trigger {
-  height: auto !important;
-  @apply !border !bg-background !shadow-xs hover:!bg-accent !text-accent-foreground hover:!text-accent-foreground dark:!bg-input/30 !border-input/10 dark:!border-input dark:hover:!bg-input/50;
-  @apply !px-2 !py-[6px] !rounded-md !text-sm !font-semibold !shadow-sm !transition-all;
+/* ─── GAME PANEL SYSTEM ──────────────────────────────────────────────────── */
+.g-panel {
+  background: var(--g-surface);
+  border: 1px solid var(--g-border);
+  border-radius: 2px;
 }
+
+.g-panel-header {
+  font-family: var(--g-font-data);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--g-txt-3);
+  padding: var(--g-space-2) var(--g-space-3);
+  border-bottom: 1px solid var(--g-border);
+}
+
+/* Keep bb- classes working (backward compat) */
+.bb-panel          { background: var(--g-surface); border: 1px solid var(--g-border); border-radius: 2px; }
+.bb-panel-header   { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--g-txt-3); padding: var(--g-space-2) var(--g-space-3); border-bottom: 1px solid var(--g-border); }
+.bb-number         { font-family: var(--g-font-data); font-weight: 700; font-variant-numeric: tabular-nums; }
+.bb-number-up      { color: var(--g-up); }
+.bb-number-down    { color: var(--g-down); }
+.bb-number-neutral { color: var(--g-txt-1); }
+
+/* ─── GAME TYPOGRAPHY UTILITIES ─────────────────────────────────────────── */
+.g-label   { font-family: var(--g-font-data); font-size: 9px;  font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--g-txt-3); }
+.g-caption { font-family: var(--g-font-data); font-size: 11px; color: var(--g-txt-2); }
+.g-data    { font-family: var(--g-font-data); font-size: 13px; font-weight: 700; color: var(--g-txt-1); }
+.g-display { font-family: var(--g-font-display); font-weight: 900; color: var(--g-txt-1); }
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────────────────── */
+@keyframes g-pulse       { 0%,100%{opacity:1} 50%{opacity:0.4} }
+@keyframes g-flash-up    { 0%{background:rgba(0,194,106,0.35)} 100%{background:transparent} }
+@keyframes g-flash-down  { 0%{background:rgba(239,68,68,0.35)}  100%{background:transparent} }
+@keyframes g-border-warn { 0%,100%{border-color:var(--g-down)} 50%{border-color:transparent} }
+@keyframes g-shake       { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-2px)} 40%,80%{transform:translateX(2px)} }
+@keyframes g-vignette    { 0%,100%{opacity:0.6} 50%{opacity:1} }
+
+.bb-animate-pulse        { animation: g-pulse 2s ease-in-out infinite; }
+.bb-animate-flash-up     { animation: g-flash-up 0.3s ease-out; }
+.bb-animate-flash-down   { animation: g-flash-down 0.3s ease-out; }
+.bb-animate-border-pulse { animation: g-border-warn 1s ease-in-out infinite; }
+.bb-animate-shake        { animation: g-shake 0.5s ease-in-out; }
+
+/* ─── CRISIS OVERLAYS ────────────────────────────────────────────────────── */
+:root {
+  --bb-black:          var(--g-base);
+  --bb-dark:           var(--g-surface);
+  --bb-panel:          var(--g-surface);
+  --bb-border:         var(--g-border);
+  --bb-border-light:   var(--g-border-bright);
+  --bb-orange:         var(--g-brand);
+  --bb-yellow:         var(--g-warn);
+  --bb-green:          var(--g-up);
+  --bb-red:            var(--g-down);
+  --bb-blue:           var(--g-info);
+  --bb-cyan:           #06b6d4;
+  --bb-text-primary:   var(--g-txt-1);
+  --bb-text-secondary: var(--g-txt-2);
+  --bb-text-muted:     var(--g-txt-3);
+  --bb-metric-up:      var(--g-up);
+  --bb-metric-down:    var(--g-down);
+  --bb-metric-neutral: var(--g-txt-2);
+  --bb-metric-warning: var(--g-warn);
+  --bb-metric-danger:  var(--g-down);
+  --bb-metric-critical: #dc2626;
+  --bb-crisis-warning:  rgba(245,158,11,0.25);
+  --bb-crisis-critical: rgba(239,68,68,0.25);
+  --bb-crisis-emergency: rgba(220,38,38,0.45);
+}
+
+.bb-crisis-vignette  { pointer-events:none; position:fixed; inset:0; z-index:100; }
+.bb-crisis-warning   { box-shadow: inset 0 0 150px 50px var(--bb-crisis-warning); }
+.bb-crisis-critical  { box-shadow: inset 0 0 200px 80px var(--bb-crisis-critical); animation: g-vignette 2s ease-in-out infinite; }
+.bb-crisis-emergency { box-shadow: inset 0 0 250px 100px var(--bb-crisis-emergency); animation: g-vignette 1s ease-in-out infinite; }
+.bb-crisis-desaturate { filter: saturate(0.6); }
+.bb-crisis-shake     { animation: g-shake 0.5s ease-in-out; }
+
+/* ─── LIGHT MODE (TradingView light) ─────────────────────────────────────── */
+html.light {
+  --g-base:          #ffffff;
+  --g-surface:       #f0f3fa;
+  --g-raised:        #e4e7ef;
+  --g-border:        #e0e3eb;
+  --g-border-bright: #c9ccd6;
+  --g-brand:         #2962ff;
+  --g-brand-dim:     rgba(41,98,255,0.1);
+  --g-up:            #26a69a;
+  --g-down:          #ef5350;
+  --g-warn:          #f59e0b;
+  --g-info:          #2196f3;
+  --g-txt-1:         #131722;
+  --g-txt-2:         #434651;
+  --g-txt-3:         #787b86;
+
+  /* bb- overrides for legacy components */
+  --bb-black:          #ffffff;
+  --bb-dark:           #f0f3fa;
+  --bb-panel:          #f0f3fa;
+  --bb-border:         #e0e3eb;
+  --bb-text-primary:   #131722;
+  --bb-text-secondary: #434651;
+  --bb-text-muted:     #787b86;
+  --bb-metric-up:      #26a69a;
+  --bb-metric-down:    #ef5350;
+  --bb-metric-warning: #f59e0b;
+  --bb-metric-danger:  #ef5350;
+}
+

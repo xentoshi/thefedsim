@@ -5,11 +5,6 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import { ThemeSelect } from '@/components/theme-select'
-import dynamic from 'next/dynamic'
-const WalletMultiButton = dynamic(
-  async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
-  { ssr: false }
-)
 
 export function AppHeader({ links = [] }: { links: { label: string; path: string }[] }) {
   const pathname = usePathname()
@@ -47,7 +42,6 @@ export function AppHeader({ links = [] }: { links: { label: string; path: string
         </Button>
 
         <div className="hidden md:flex items-center gap-4">
-          <WalletMultiButton />
           <ThemeSelect />
         </div>
 
@@ -58,7 +52,7 @@ export function AppHeader({ links = [] }: { links: { label: string; path: string
                 {links.map(({ label, path }) => (
                   <li key={path}>
                     <Link
-                      className={`hover:text-neutral-500 dark:hover:text-white block text-lg py-2  ${isActive(path) ? 'text-neutral-500 dark:text-white' : ''} `}
+                      className={`hover:text-neutral-500 dark:hover:text-white block text-lg py-2 ${isActive(path) ? 'text-neutral-500 dark:text-white' : ''}`}
                       href={path}
                       onClick={() => setShowMenu(false)}
                     >
@@ -67,10 +61,7 @@ export function AppHeader({ links = [] }: { links: { label: string; path: string
                   </li>
                 ))}
               </ul>
-              <div className="flex flex-col gap-4">
-                <WalletMultiButton />
-                <ThemeSelect />
-              </div>
+              <ThemeSelect />
             </div>
           </div>
         )}
