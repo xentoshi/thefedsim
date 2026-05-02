@@ -51,12 +51,9 @@ function buildCandles(state: GameState): CandlestickData[] {
 
 // Bloomberg components
 import {
-  AlertBanner,
-  useAlerts,
   CrisisOverlay,
   calculateCrisisLevel,
   MarketReaction,
-  BackgroundPulse,
 } from '../bloomberg'
 
 // Layout components
@@ -88,12 +85,10 @@ export function BloombergLayout() {
   } = useGameEngine('tutorial')
 
   const [showScenarioSelector, setShowScenarioSelector] = useState(false)
-  const { alerts, addAlert, dismissAlert } = useAlerts()
   const { resolvedTheme } = useTheme()
   const isDark = resolvedTheme !== 'light'
   const [actionTimestamp, setActionTimestamp] = useState(0)
   const [lastAction, setLastAction] = useState<SimplePolicyAction | null>(null)
-  const [pulseColor, setPulseColor] = useState<'red' | 'green' | 'blue' | 'orange' | 'zinc'>('blue')
 
 
   // A: Turn resolution card
@@ -125,21 +120,6 @@ export function BloombergLayout() {
     [state]
   )
 
-  // Handle events — add to alert banner only (TurnResolutionCard shows the detail)
-  useEffect(() => {
-    if (lastResult?.success && lastResult.events.length > 0) {
-      for (const event of lastResult.events) {
-        addAlert({
-          message: event.headline,
-          severity: event.severity === 'crisis' ? 'critical' : event.severity === 'major' ? 'warning' : 'info',
-          category: event.category,
-          autoDismiss: true,
-          duration: 6000,
-        })
-      }
-    }
-  }, [lastResult]) // eslint-disable-line react-hooks/exhaustive-deps
-
   // Show turn resolution card whenever lastResult updates
   useEffect(() => {
     if (!lastResult || !resolutionAction) return
@@ -159,10 +139,6 @@ export function BloombergLayout() {
     setLastAction(action)
     setActionTimestamp(Date.now())
 
-    const colorMap: Record<SimplePolicyAction, typeof pulseColor> = {
-      raise: 'red', cut: 'green', hold: 'zinc', qe: 'blue', qt: 'orange',
-    }
-    setPulseColor(colorMap[action])
   }
 
   const handleRaise = () => { handleAction('raise'); raiseRates() }
@@ -201,17 +177,11 @@ export function BloombergLayout() {
 
   return (
     <>
-      {/* Alerts */}
-      <AlertBanner alerts={alerts} onDismiss={dismissAlert} />
-
       {/* Crisis Overlay */}
       <CrisisOverlay level={crisisLevel} />
 
       {/* Market Reaction */}
       <MarketReaction lastAction={lastAction} timestamp={actionTimestamp} />
-
-      {/* Background Pulse */}
-      <BackgroundPulse trigger={actionTimestamp} color={pulseColor} />
 
       {/* A: Turn resolution card */}
       {showResolution && lastResult && resolutionAction && (
