@@ -49,12 +49,6 @@ export default function LandingPage() {
         }}
       />
 
-      {/* Devnet badge */}
-      <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 rounded px-2 py-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-        <span className="text-[10px] font-mono text-amber-400 tracking-widest uppercase">Devnet</span>
-      </div>
-
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-3xl">
 

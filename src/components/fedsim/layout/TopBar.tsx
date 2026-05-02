@@ -95,11 +95,6 @@ export function TopBar({ headlines, spxLevel, btcPrice, fedFundsRate, yield10y, 
       <div className="flex items-center gap-3 px-4 h-full flex-shrink-0"
         style={{ borderLeft: '1px solid var(--g-border)' }}>
         <Clock />
-        <span className="flex items-center gap-1 px-2 py-0.5 rounded-sm"
-          style={{ fontSize: 10, fontFamily: 'var(--g-font-data)', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', background: 'rgba(255,152,0,0.1)', color: 'var(--g-warn)', border: '1px solid rgba(255,152,0,0.2)' }}>
-          <span className="w-1 h-1 rounded-full bg-current animate-pulse" />
-          Devnet
-        </span>
         {onHelp && (
           <button
             onClick={onHelp}
